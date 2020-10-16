@@ -1,0 +1,32 @@
+#--------------------------------------------------
+# Répertoire : /
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+#---------------------------------------------------
+#ROUTES
+#---------------------------------------------------
+
+  #DETAILS D'UN POST
+  #PATTERN: posts/{id}/{slug}
+  #VERS: index.php?postID=x
+  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?postID=$1 [L]
+
+  #FORMULAIRE DE CONNEXION AU BACKOFFICE
+  #PATTERN: users/login
+  #VERS: index.php?users=login
+  RewriteRule ^users\/login$ index.php?users=loginForm [L]
+
+  #TRAITEMENT DU FORMULAIRE DE CONNEXION AU BACKOFFICE
+  #PATTERN: users/login/submit
+  #VERS: index.php?users=loginCheck
+  RewriteRule ^users\/login\/submit$ index.php?users=loginCheck [L]
+
+# --------------------------------------------------
+RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
+RewriteRule ^(.*)$ index.php [L]
