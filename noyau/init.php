@@ -5,7 +5,7 @@
  */
 session_start(); // en cas d'utilisation de variables de session
 
- require_once '../app/config/parametres.php';
+ require_once '../app/config/params.php';
  require_once '../noyau/connexion.php';
  require_once '../noyau/constantes.php';
  require_once '../noyau/fonctions.php';

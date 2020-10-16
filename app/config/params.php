@@ -10,6 +10,6 @@
 
  // PARAMETRES DE CONNEXION A LA DB
   define('HOSTNAME', 'localhost');
-  define('DBNAME', 'wed_project');
+  define('DBNAME', 'alex_parker_octobre_2020');
   define('USERNAME', 'root');
   define('USERPWD', '');
