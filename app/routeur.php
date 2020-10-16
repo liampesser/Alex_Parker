@@ -5,8 +5,9 @@
   HYDRATE LES ZONES DYNAMIQUES
  */
 
-// ROUTES DES POSTS
- // ROUTE DU DETAIL D'UN POST
- // PATTERN: ?postID=x
+ // ROUTE PAR DEFAUT: liste des posts
+ // PATTERN: /
  // CTRL: postsControleur
- // ACTION: show
+ // ACTION: index
+  include_once '../app/controleurs/postsControleur.php';
+  \App\Controleurs\PostsControleur\indexAction($connexion);
