@@ -13,23 +13,27 @@
  <!-- ADD A POST END -->
 
  <!-- Blog Post Start -->
- <?php
-    foreach ($posts as $post):
-    $created_at = strtotime($post['created_at']);
-   ?>
+
    <div class="col-md-12 blog-post">
-     <div class="post-title">
-       <a href="single.html"><h1><?php echo $post['title']; ?></h1></a>
-     </div>
-     <div class="post-info">
-       <span><?php echo date('F', $created_at) ?></span>
-       <span><?php echo date('d', $created_at) ?>,</span>
-       <span><?php echo date('Y', $created_at) ?></span> |
-       <span>Life style</span>
-     </div>
-     <p><?php echo $post['text']; ?></p>
-     <a href="single.html" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></a>
+     <?php
+        foreach ($posts as $post):
+        $created_at = strtotime($post['created_at']);
+       ?>
+         <div class="post-title">
+           <a href="posts/<?php echo $post['id']; ?>/<?php echo Noyau\Fonctions\slugify($post['title']); ?>">
+             <h1><?php echo $post['title']; ?></h1>
+           </a>
+         </div>
+         <div class="post-info">
+           <span><?php echo Noyau\Fonctions\formater_date($post['created_at'], 'Y-m-d'); ?></span> |
+           <span>Life style</span>
+         </div>
+         <p><?php echo $post['text']; ?></p>
+         <a href="posts/<?php echo $post['id']; ?>/<?php echo Noyau\Fonctions\slugify($post['title']); ?>" class="button button-style button-anim fa fa-long-arrow-right">
+           <span>Read More</span>
+         </a>
+    <?php endforeach; ?>
   </div>
- <?php endforeach; ?>
+
 
 <!-- Blog Post End -->

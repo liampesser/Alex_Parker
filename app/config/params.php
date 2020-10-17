@@ -15,4 +15,4 @@
   define('USERPWD', '');
 
   // TEXTES
-  define('TITRE_LISTE_POSTS', "Alex Parker | Blog");
+  define('TITRE_LISTE_POSTS', "Alex Parker - Blog");

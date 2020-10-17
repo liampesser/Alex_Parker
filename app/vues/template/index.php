@@ -6,23 +6,30 @@
  */
  ?>
 
- <!DOCTYPE html>
- <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-
     <?php include '../app/vues/template/partials/_head.php'; ?>
-
   </head>
+
   <body>
-    
-    <?php include '../app/vues/template/partials/_preloader.php'; ?>
+ 	 <!-- Preloader Start -->
+      <?php include '../app/vues/template/partials/_preloader.php'; ?>
+   <!-- Preloader End -->
 
-    <?php include '../app/vues/template/partials/_main.php'; ?>
+     <div id="main">
+         <div class="container">
+             <div class="row">
+               <?php include '../app/vues/template/partials/_main.php'; ?>
+             </div>
+          </div>
+       </div>
 
-    <?php include '../app/vues/template/partials/_backtotop.php'; ?>
+     <!-- Back to Top Start -->
+     <a href="#" class="scroll-to-top"><i class="fa fa-long-arrow-up"></i></a>
+     <!-- Back to Top End -->
 
-    <?php include '../app/vues/template/partials/_scripts.php'; ?>
+     <?php include '../app/vues/template/partials/_scripts.php'; ?>
 
-    </body>
-  </html>
+  </body>
+</html>
