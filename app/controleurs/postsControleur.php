@@ -25,10 +25,20 @@ function indexAction(\PDO $connexion) {
   $content = ob_get_clean();
 }
 
+/**
+ * [showAction description]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
 function showAction(\PDO $connexion, int $id) {
   // Je mets dans $post les infos du post que je demande au modèle
   include_once "../app/modeles/postsModele.php";
   $post = PostsModele\findOneById($connexion, $id);
+
+  // Je mets dans $category le nom de la catégorie du post que je demande au modèle
+  include_once "../app/modeles/categoriesModele.php";
+  $category = \App\Modeles\CategoriesModele\findOneById($connexion, $post['category_id']);
 
   // Je charge la vue show dans $content
   GLOBAL $content, $title;

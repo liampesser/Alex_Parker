@@ -10,14 +10,15 @@ namespace App\Modeles\PostsModele;
  * @param  PDO   $connexion [description]
  * @return array            [description]
  */
-function findAll(\PDO $connexion) :array {
-  $sql = "SELECT*
-          FROM posts
-          ORDER BY created_at DESC
-          LIMIT 10;";
-  $rs = $connexion->query($sql);
-  return $rs->fetchAll(\PDO::FETCH_ASSOC);
-}
+ function findAll(\PDO $connexion) :array {
+   $sql = "SELECT *, posts.id AS postID, posts.created_at AS postCreatedAt, categories.name AS categoryName
+           FROM posts
+           JOIN categories ON posts.category_id = categories.id
+           ORDER BY postCreatedAt DESC
+           LIMIT 10;";
+   $rs = $connexion->query($sql);
+   return $rs->fetchAll(\PDO::FETCH_ASSOC);
+ }
 
 /**
  * [findOneById description]
@@ -25,7 +26,7 @@ function findAll(\PDO $connexion) :array {
  * @param  int   $id        [description]
  * @return array            [description]
  */
-function findOneById(\PDO $connexion, int $id): array {
+function findOneById(\PDO $connexion, int $id) :array {
   $sql = "SELECT *
           FROM posts
           WHERE id = :id;";

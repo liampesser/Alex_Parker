@@ -3,6 +3,7 @@
   ./app/vues/posts/index.php
   Variables disponibles :
     -$post: ARRAY(id, title, text, created_at, quote, category_id)
+    - $category: ARRAY(id, name)
  */
  ?>
 
@@ -25,7 +26,7 @@
      <!-- Post Detail Start -->
      <div class="post-info">
        <span><?php echo Noyau\Fonctions\formater_date($post['created_at'], 'F d, Y'); ?></span> |
-       <span>Life style</span>
+       <span><?php echo $category['name']; ?></span>
      </div>
         <!-- Post Detail End -->
 

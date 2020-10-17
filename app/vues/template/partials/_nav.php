@@ -4,14 +4,16 @@
 */
 ?>
 
-<a href="index.html"><img src="assets/images/pic/my-pic.png" alt=""></a>
+<a href="BASE_URL_PUBLIC"><img src="assets/images/pic/my-pic.png" alt=""></a>
  <nav id="menu">
    <ul class="menu-link">
-       <li><a href="index.html">My blog</a></li>
+       <li><a href="BASE_URL_PUBLIC">My blog</a></li>
     </ul>
  </nav>
  <ul class="menu-link">
-     <li><a href="index.html">Life style [12]</a></li>
-     <li><a href="index.html">Sport[23]</a></li>
-     <li><a href="index.html">Music[46]</a></li>
+   <?php include_once '../app/modeles/categoriesModele.php';
+      $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+      foreach ($categories as $category) :?>
+     <li><a href="BASE_URL_PUBLIC"><?php echo $category['name']; ?></a></li>
+   <?php endforeach; ?>
   </ul>
