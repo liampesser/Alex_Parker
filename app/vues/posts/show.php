@@ -40,8 +40,8 @@
 
        <!-- Post Buttons -->
        <div>
-         <a href="<?php echo BASE_URL_PUBLIC; ?>posts/<?php echo $post['id']; ?>/<?php echo Noyau\Fonctions\slugify($post['title']);?>/edit/form" type="button" class="btn btn-primary">Edit Post</a>
-         <a href="#" type="button" class="btn btn-secondary" role="button">Delete Post</a>
+         <a href="posts/<?php echo $post['id']; ?>/<?php echo Noyau\Fonctions\slugify($post['title']);?>/edit/form" type="button" class="btn btn-primary">Edit Post</a>
+         <a href="posts/<?php echo $post['id']; ?>/<?php echo Noyau\Fonctions\slugify($post['title']);?>/delete" type="button" class="btn btn-secondary delete" role="button">Delete Post</a>
        </div>
        <!-- Post Buttons End -->
      </div>

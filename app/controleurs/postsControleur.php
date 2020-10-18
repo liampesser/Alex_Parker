@@ -60,6 +60,7 @@ function addFormAction(\PDO $connexion) {
   // Je vais chercher les catégories
   include_once '../app/modeles/categoriesModele.php';
   $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+
   // Je charge la vue addForm dans $content
   GLOBAL $content, $title;
   $title = TITLE_POST_ADDFORM;
@@ -79,6 +80,67 @@ function addInsertAction(\PDO $connexion, array $data) {
   // Je demande au modèle d'ajouter le post
     include_once '../app/modeles/postsModele.php';
     $id = PostsModele\insertOne($connexion, $data);
+
+  // Je redirige vers la liste des posts
+    header('location:' . BASE_URL_PUBLIC . 'posts');
+}
+
+
+function deleteAction(\PDO $connexion, int $id) {
+  // Je demande au modèle de supprimer le post
+    include_once '../app/modeles/postsModele.php';
+    $return = PostsModele\deleteOneById($connexion, $id);
+
+  // Je redirige vers la liste des posts
+    header('location:' . BASE_URL_PUBLIC . 'posts');
+}
+
+
+
+/**
+ * [editFormAction description]
+ * @param  PDO    $connexion [description]
+ * @param  int    $id        [description]
+ * @return [type]            [description]
+ */
+function editFormAction(\PDO $connexion, int $id) {
+  // Je vais chercher les catégories
+  include_once '../app/modeles/categoriesModele.php';
+  $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+
+  // Je demande au modèle d'afficher le post à afficher dans le formulaire
+  include_once '../app/modeles/postsModele.php';
+  $post = \App\Modeles\PostsModele\findOneById($connexion, $id);
+
+  // Je charge la vue addForm dans $content
+  GLOBAL $content, $title;
+  $title = TITLE_POST_EDITFORM;
+  ob_start();
+    include '../app/vues/posts/editForm.php';
+    $content = ob_get_clean();
+}
+
+
+
+/**
+ * [editUpdateAction description]
+ * @param  PDO    $connexion [description]
+ * @param  array  $data      [description]
+ * @return [type]            [description]
+ */
+function editUpdateAction(\PDO $connexion, array $data) {
+  // Je demande au modèle de modifier le post
+  include_once '../app/modeles/postsModele.php';
+  $return1 = PostsModele\updateOneById($connexion, $data);
+
+  // Je demande au modèle d'ajouter les catégories correspondantes
+  foreach ($_POST['categories'] as $categorieID) {
+    $return2 = PostsModele\insertCategorieById($connexion, [
+      'postID' => $id,
+      'categorieID' => $categorieID
+    ]);
+  }
+
   // Je redirige vers la liste des posts
     header('location:' . BASE_URL_PUBLIC . 'posts');
 }

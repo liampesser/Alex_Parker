@@ -8,12 +8,13 @@ Options +FollowSymlinks
 # Activation du module de réécriture d'URL :
 RewriteEngine on
 
+
 #---------------------------------------------------
 #ROUTES DES POSTS
 #---------------------------------------------------
 
   #DETAILS D'UN POST
-  #PATTERN: posts/{id}/{slug}
+  #PATTERN: posts/{id}/{slug-du-post}
   #VERS: index.php?postID=x
   RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?postID=$1 [L]
 
@@ -27,6 +28,20 @@ RewriteEngine on
   # VERS: index.php?posts=addInsert
   RewriteRule ^posts\/add\/insert$ index.php?posts=addInsert [L]
 
+  # SUUPRESSION D'UN POST : DELETE
+  # PATTERN: posts/{id}/{slug-du-post}/delete
+  # VERS: index.php?posts=delete&id=xxx
+  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)\/delete$ index.php?posts=delete&id=$1 [L]
+
+  # EDITION D'UN POST : FORMULAIRE
+  # PATTERN: posts/{id}/{slug-du-post}/edit/form
+  # VERS: index.php?posts=editForm&id=xxx
+  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)\/edit\/form$ index.php?posts=editForm&id=$1 [L]
+
+  # EDITION D'UN POST : UPDATE
+  # PATTERN: posts/{id}/{slug-du-post}/edit/update
+  # VERS: index.php?posts=editUpdate&id=xxx
+  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)\/edit\/update$ index.php?posts=editUpdate&id=$1 [L]
 
 
 # --------------------------------------------------

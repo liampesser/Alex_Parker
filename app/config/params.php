@@ -17,3 +17,4 @@
   // TEXTES
   define('TITLE_LIST_POSTS', "Alex Parker - Blog");
   define('TITLE_POST_ADDFORM', "Alex Parker - Add a post");
+  define('TITLE_POST_EDITFORM', "Alex Parker - Edit a post");
