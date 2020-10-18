@@ -15,4 +15,5 @@
   define('USERPWD', '');
 
   // TEXTES
-  define('TITRE_LISTE_POSTS', "Alex Parker - Blog");
+  define('TITLE_LIST_POSTS', "Alex Parker - Blog");
+  define('TITLE_POST_ADDFORM', "Alex Parker - Add a post");

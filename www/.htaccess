@@ -9,13 +9,24 @@ Options +FollowSymlinks
 RewriteEngine on
 
 #---------------------------------------------------
-#ROUTES
+#ROUTES DES POSTS
 #---------------------------------------------------
 
   #DETAILS D'UN POST
   #PATTERN: posts/{id}/{slug}
   #VERS: index.php?postID=x
   RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?postID=$1 [L]
+
+  # AJOUT D'UN POST : FORMULAIRE
+  # PATTERN: posts/add/form
+  # VERS: index.php?posts=addForm
+  RewriteRule ^posts\/add\/form$ index.php?posts=addForm [L]
+
+  # AJOUT D'UN POST : INSERT
+  # PATTERN: posts/add/insert
+  # VERS: index.php?posts=addInsert
+  RewriteRule ^posts\/add\/insert$ index.php?posts=addInsert [L]
+
 
 
 # --------------------------------------------------

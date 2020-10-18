@@ -40,7 +40,7 @@
 
        <!-- Post Buttons -->
        <div>
-         <a href="form.html" type="button" class="btn btn-primary">Edit Post</a>
+         <a href="<?php echo BASE_URL_PUBLIC; ?>posts/<?php echo $post['id']; ?>/<?php echo Noyau\Fonctions\slugify($post['title']);?>/edit/form" type="button" class="btn btn-primary">Edit Post</a>
          <a href="#" type="button" class="btn btn-secondary" role="button">Delete Post</a>
        </div>
        <!-- Post Buttons End -->

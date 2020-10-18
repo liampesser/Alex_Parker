@@ -19,11 +19,13 @@ function indexAction(\PDO $connexion) {
 
   // Je charge la vue posts/index dans $content
   GLOBAL $title, $content;
-  $title = TITRE_LISTE_POSTS;
+  $title = TITLE_LIST_POSTS;
   ob_start();
     include '../app/vues/posts/index.php';
   $content = ob_get_clean();
 }
+
+
 
 /**
  * [showAction description]
@@ -46,4 +48,37 @@ function showAction(\PDO $connexion, int $id) {
   ob_start();
     include '../app/vues/posts/show.php';
   $content = ob_get_clean();
+}
+
+
+
+/**
+ * [addFormAction description]
+ * @param PDO $connexion [description]
+ */
+function addFormAction(\PDO $connexion) {
+  // Je vais chercher les catégories
+  include_once '../app/modeles/categoriesModele.php';
+  $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+  // Je charge la vue addForm dans $content
+  GLOBAL $content, $title;
+  $title = TITLE_POST_ADDFORM;
+  ob_start();
+    include '../app/vues/posts/addForm.php';
+    $content = ob_get_clean();
+}
+
+
+
+/**
+ * [addInsertAction description]
+ * @param PDO   $connexion [description]
+ * @param array $data      [description]
+ */
+function addInsertAction(\PDO $connexion, array $data) {
+  // Je demande au modèle d'ajouter le post
+    include_once '../app/modeles/postsModele.php';
+    $id = PostsModele\insertOne($connexion, $data);
+  // Je redirige vers la liste des posts
+    header('location:' . BASE_URL_PUBLIC . 'posts');
 }
