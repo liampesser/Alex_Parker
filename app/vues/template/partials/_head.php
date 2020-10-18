@@ -22,13 +22,13 @@
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="assets/images/favicon/favicon.ico">
-<link rel="apple-touch-icon" sizes="144x144" type="image/x-icon" href="assets/images/favicon/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="144x144" type="image/x-icon" href="images/favicon/apple-touch-icon.png">
 
 <!-- All CSS Plugins -->
-<link rel="stylesheet" type="text/css" href="assets/css/plugin.css">
+<link rel="stylesheet" type="text/css" href="css/plugin.css">
 
 <!-- Main CSS Stylesheet -->
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 
 <!-- Google Web Fonts  -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">

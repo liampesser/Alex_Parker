@@ -12,8 +12,8 @@
  </nav>
  <ul class="menu-link">
    <?php include_once '../app/modeles/categoriesModele.php';
-      $categories = \App\Modeles\CategoriesModele\findAll($connexion);
+      $categories = \App\Modeles\CategoriesModele\findAllAndCountById($connexion);
       foreach ($categories as $category) :?>
-     <li><a href="BASE_URL_PUBLIC"><?php echo $category['name']; ?></a></li>
+     <li><a href="BASE_URL_PUBLIC"><?php echo $category['name']; ?> [<?php echo $category['nombrePosts']; ?>]</a></li>
    <?php endforeach; ?>
   </ul>

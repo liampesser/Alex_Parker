@@ -11,14 +11,16 @@ namespace App\Modeles\PostsModele;
  * @return array            [description]
  */
  function findAll(\PDO $connexion) :array {
-   $sql = "SELECT *, posts.id AS postID, posts.created_at AS postCreatedAt, categories.name AS categoryName
-           FROM posts
-           JOIN categories ON posts.category_id = categories.id
+   $sql = "SELECT *, p.id AS postID, p.created_at AS postCreatedAt, c.name AS categoryName
+           FROM posts p
+           JOIN categories c ON p.category_id = c.id
            ORDER BY postCreatedAt DESC
            LIMIT 10;";
    $rs = $connexion->query($sql);
    return $rs->fetchAll(\PDO::FETCH_ASSOC);
  }
+
+
 
 /**
  * [findOneById description]
@@ -35,6 +37,7 @@ function findOneById(\PDO $connexion, int $id) :array {
   $rs->execute();
   return $rs->fetch(\PDO::FETCH_ASSOC);
 }
+
 
 
 /**
@@ -58,6 +61,7 @@ function insertOne(\PDO $connexion, array $data) :int {
   $rs->execute();
   return $connexion->lastInsertId();
 }
+
 
 
 /**
